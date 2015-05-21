@@ -28,9 +28,9 @@ x.writeReg(char('0x02'), 255)
 */
 
 var five = require("johnny-five");
-var Edison = require("libs/galileo-io/lib/galileo.js");
+var Edison = require("./libs/galileo-io");
 var board = new five.Board({
-  io: new Galileo()
+  io: new Edison()
 });
 
 board.on("ready", function() {
