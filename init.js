@@ -14,12 +14,13 @@ function periodicActivity()
   setTimeout(periodicActivity,1000); //call the indicated function after 1 second (1000 milliseconds)
 }
 
-var i2c = new m.I2c(0);
-i2c.address(0x62);
-i2c.write("R,56.26");
-console.log("Reading I2C..");
-function readPH() {
-    var d = i2c.read(7);
-    console.log(">> " + d);
-}
-setTimeout(function (e) { readPH(); }, 1000);
+function char(x) { return parseInt(x, 16); }
+
+x = new m.I2c(0)
+x.address(0x62)
+x.writeReg(0, 0)
+x.writeReg(1, 0)
+
+x.writeReg(char('0x08'), char('0xAA'))
+x.writeReg(char('0x04'), 255)
+x.writeReg(char('0x02'), 255)
