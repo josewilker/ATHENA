@@ -1,3 +1,4 @@
+/*
 var m = require('mraa'); //require mraa
 console.log('MRAA Version: ' + m.getVersion()); //write the mraa version to the console
 
@@ -24,5 +25,19 @@ x.writeReg(1, 0)
 x.writeReg(char('0x08'), char('0xAA'))
 x.writeReg(char('0x04'), 255)
 x.writeReg(char('0x02'), 255)
+*/
 
-x.writeByte("R,56.26", 8);
+var five = require("johnny-five");
+var Edison = require("edison-io");
+var board = new five.Board({
+  io: new Edison()
+});
+
+board.on("ready", function() {
+  var lcd = new five.LCD({
+    controller: "JHD1313M1"
+  });
+
+  lcd.useChar("heart");
+  lcd.cursor(0, 0).print("I :heart: Johnny-Five");
+});
