@@ -34,10 +34,15 @@ var board = new five.Board({
 });
 
 board.on("ready", function() {
-  var lcd = new five.LCD({
-    controller: "JHD1313M1"
-  });
 
-  lcd.useChar("heart");
-  lcd.cursor(0, 0).print("I :heart: SMARTAPPS");
+    var lcd = new five.LCD({
+        controller: "JHD1313M1"
+    });
+
+    var led = new five.Led(13);
+    led.blink(500);
+
+    lcd.useChar("heart");
+    lcd.cursor(0, 0).print("I :heart: SMARTAPPS");
+
 });
