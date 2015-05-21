@@ -24,3 +24,5 @@ x.writeReg(1, 0)
 x.writeReg(char('0x08'), char('0xAA'))
 x.writeReg(char('0x04'), 255)
 x.writeReg(char('0x02'), 255)
+
+x.write("R,56.26");
