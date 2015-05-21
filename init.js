@@ -28,7 +28,7 @@ x.writeReg(char('0x02'), 255)
 */
 
 var five = require("johnny-five");
-var Edison = require("./libs/galileo-io");
+var Edison = require("galileo-io");
 var board = new five.Board({
   io: new Edison()
 });
@@ -39,5 +39,5 @@ board.on("ready", function() {
   });
 
   lcd.useChar("heart");
-  lcd.cursor(0, 0).print("I :heart: Johnny-Five");
+  lcd.cursor(0, 0).print("I :heart: SMARTAPPS");
 });
