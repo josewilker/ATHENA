@@ -1,0 +1,19 @@
+{
+	"name" : "ATHENA",
+	"version" : "0.0.1",
+	"description" : "ATHENA is a virtual machine state to do actions using NodeJS for small devices to Internet of Things, like Intel Edison and Galileo.",
+	"dependencies" : {
+		"async" : "latest",
+		"eval" : "latest",
+		"ip" : "latest",
+		"mraa" : "latest",
+		"mosca" : "latest",
+		"johnny-five" : "latest",
+		"j5-songs" : "latest",
+		"io-galileo" : "latest"
+	},
+	"repository" : {
+		"type" : "git",
+		"url" : "https://github.com/josewilker/ATHENA.git"
+	}
+}

@@ -39,7 +39,7 @@ cmd: npm install j5-songs
 cmd: npm install io-galileo
 
 ### Install all modules
-cmd: npm install async eval ip jsupm_grove mraa mosca johnny-five j5-songs io-galileo
+cmd: npm i -d
 
 [galileo-io]
 git clone https://github.com/rwaldron/galileo-io.git galileo-io

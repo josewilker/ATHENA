@@ -4,18 +4,20 @@ First, ATHENA is a small word for, **A**dvanced **T**iny **H**yper and **E**ndle
 ## Introduction
 ATHENA is a virtual machine state to do actions using NodeJS for small devices to Internet of Things, like Intel Edison and Galileo. You can use it to do a lot of things with your little computer. We recomend install it on Galileo or Edison because ATHENA use MRAA library and jhonny-five for work on base level of devices.
 
-```
-examples of applications:
-    check home sensors for security,
-    put your coffee machine to do a coffee remote,
-    home lights info remote,
-    send a email,
-    deploy applications,
-    monitor social networks,
-    private message network,
-    check wheater and
+
+Examples of applications:
+
+````
+    - check home sensors for security,
+    - put your coffee machine to do a coffee remote,
+    - home lights info remote,
+    - send a email,
+    - deploy applications,
+    - monitor social networks,
+    - private message network,
+    - check wheater and
     much more.
-```
+````
 
 ## Requirements
 For that you can use ATHENA you need two things listed below.
@@ -54,7 +56,7 @@ git clone https://github.com/cowboy/node-getobject.git getobject
 # Easy setup (config.json)
 ATHENA help you work with hardware for **Internet of Things** of Intel products. Intel help you make a connection between physical world with virtual. So, below you can see how setup your sensors, leds, piezo, buttons, relay. fast and easy, see below:
 
-````
+```
 {
     "name" : "A.T.H.E.N.A",
     "version" : "1.0",
@@ -135,7 +137,8 @@ ATHENA help you work with hardware for **Internet of Things** of Intel products.
         }
     }
 }
-````
+```
+
 Basically, before you put right data on **config.json** you can run your machine with default installation of packages and see the results.
 
 # Actions
@@ -158,7 +161,7 @@ Title | Description
 
 ###_Example_ of file action:
 
-````
+```
 /** Action name **/
 athenaIp = {}
 
@@ -188,7 +191,8 @@ athenaIp.run = function(context, events) {
 /** create action globally **/
 module.exports = athenaIp;
 
-````
+```
+
 This is a example of action **ip.js** included by default on A.T.H.E.N.A.
 
 #### WD IO
@@ -281,8 +285,9 @@ Pay atention! You can create a n states, but becareful with it, i don't test mor
 # Work Flow
 ATHENA enable you make a work flow of actions to-do something. let's think about it... think, you have a door that when it's open light it's on and when it's closed light is off. You can do a flow to do it. Below I show a simple flow to working with buttons, and i'm working to enable other ways.
 
-Flow example:
-````
+**Flow** example:
+
+```
 module.exports = function(objThis, objButton, objLed){
 
     // button select
@@ -371,7 +376,7 @@ module.exports = function(objThis, objButton, objLed){
     }
 
 }
-````
+```
 
 ### Explanation
 
@@ -382,31 +387,31 @@ When ATHENA start's she up a socket server that allow you connect on it using a 
 
 > If you can extend skills of your device, put on him a dedicated ip address and control athena actions and states remote.
 
-Remote command file example (rc.json):
-````
-[
-    {
-        "topic" : "rc.ip",
-        "cmd" : "_ip.run(this, events)",
-        "wait" : "10"
-    },
-    {
-        "topic" : "rc.mario",
-        "cmd" : "_songs.mario(this, events)",
-        "wait" : "2"
-    },
-    {
-        "topic" : "state.index", // input direct command
-        "cmd" : "-index",
-        "type" : "input"
-    },
-    {
-        "topic" : "state.indexo", // output direct command
-        "cmd" : "-index",
-        "type" : "output"
-    }
-]
-````
+**Remote Command** file example (rc.json):
+
+```
+{
+    "topic" : "rc.ip",
+    "cmd" : "_ip.run(this, events)",
+    "wait" : "10"
+},
+{
+    "topic" : "rc.mario",
+    "cmd" : "_songs.mario(this, events)",
+    "wait" : "2"
+},
+{
+    "topic" : "state.index", // input direct command
+    "cmd" : "-index",
+    "type" : "input"
+},
+{
+    "topic" : "state.indexo", // output direct command
+    "cmd" : "-index",
+    "type" : "output"
+}
+```
+
 All commands are avaiable with TCP protocol, so if you have a application on your network, that send a message by socket, you can send message to your device.
 
 **PAY ATENTION!** Look the file, if you want send a message that action is a state, you need put command (cmd) option with -, if you want call to a action directly, you maybe that have use the _ .
@@ -414,7 +419,7 @@ All commands are avaiable with TCP protocol, so if you have a application on you
 # Third-party
 Sometimes we try put more fun in our things. So, on this time, we added a libraries that put songs on a buzzer and print images on I2C lcd.
 
-###j5-songs
+##Songs
 **j5-songs** is a library that have songs for buzzers.
 
 - Starwars (mom like it)
@@ -422,8 +427,8 @@ Sometimes we try put more fun in our things. So, on this time, we added a librar
 - Super Mario (dad like it)
 
 
-###Icons
-icons are included with **jhonny-five**.
+##Icons
+icons are included with **jhonny-five** library.
 
 Icon | description
 -|-
