@@ -139,7 +139,10 @@ htriggers.init = function() {
 
     });
 */
-    async.waterfall(asyncTriggers, false);
+    async.waterfall(asyncTriggers, function(err, result){
+        console.log(err);
+        console.log(result);
+    });
 
     return this;
 
