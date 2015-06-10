@@ -31,10 +31,10 @@ htriggers.init = function() {
 
         for(i=0; i < ledLength; i++) {
 
-            eval("htriggers.oled." + objName + "={};");
-            eval("htriggers.oled." + objName + ".obj=false;");
-            eval("htriggers.oled." + objName + ".name='" + _settingsConfig.hw.led[i].pname + "';");
-            eval("htriggers.oled." + objName + ".pin='" + _settingsConfig.hw.led[i].pin + "';");
+            eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + "={};");
+            eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".obj=false;");
+            eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".name='" + _settingsConfig.hw.led[i].pname + "';");
+            eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".pin='" + _settingsConfig.hw.led[i].pin + "';");
 
             asyncTriggers.push(async.apply(function(pin, objName, callback){
                 eval("htriggers.oled." + objName + ".obj=new five.Led(" + pin + ");");
