@@ -41,10 +41,10 @@ htriggers.init = function() {
             eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".obj=false;");
             eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".name='" + _settingsConfig.hw.led[i].pname + "';");
             eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".pin='" + _settingsConfig.hw.led[i].pin + "';");
-            /*
+
             asyncLed.push(async.apply(function(pin, objName, callback){
                 eval("htriggers.oled." + objName + ".obj=new five.Led(" + pin + ");");
-            },_settingsConfig.hw.led[i].pin, _settingsConfig.hw.led[i].obj));*/
+            },_settingsConfig.hw.led[i].pin, _settingsConfig.hw.led[i].obj));
 
         }
 
@@ -74,10 +74,10 @@ htriggers.init = function() {
             eval("htriggers.obutton." + _settingsConfig.hw.button[i].obj + ".obj=false;");
             eval("htriggers.obutton." + _settingsConfig.hw.button[i].obj + ".name='" + _settingsConfig.hw.button[i].pname + "';");
             eval("htriggers.obutton." + _settingsConfig.hw.button[i].obj + ".pin='" + _settingsConfig.hw.button[i].pin + "';");
-            /*
+
             asyncButton.push(async.apply(function(name, pin, callback){
                 eval("htriggers.obutton." + name + ".obj=new mraa.Gpio(pin);");
-            },_settingsConfig.hw.button[i].obj,_settingsConfig.hw.button[i].pin));*/
+            },_settingsConfig.hw.button[i].obj,_settingsConfig.hw.button[i].pin));
 
         }
 
@@ -96,10 +96,10 @@ htriggers.init = function() {
                         eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".obj=false;");
                         eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".name='" + _settingsConfig.hw.sensor[i].pname + "';");
                         eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".pin='" + _settingsConfig.hw.sensor[i].pin + "';");
-                        /*
+
                         asyncSensor.push(async.apply(function(name, pin, callback){
                             eval("htriggers.osensor." + name + ".obj=new five.Piezo(pin);");
-                        },_settingsConfig.hw.sensor[i].obj,_settingsConfig.hw.sensor[i].pin));*/
+                        },_settingsConfig.hw.sensor[i].obj,_settingsConfig.hw.sensor[i].pin));
 
                     break;
                 }
@@ -121,10 +121,10 @@ htriggers.init = function() {
             eval("htriggers.orelay." + _settingsConfig.hw.relay[i].obj + ".obj=false;");
             eval("htriggers.orelay." + _settingsConfig.hw.relay[i].obj + ".name='" + relayName + "';");
             eval("htriggers.orelay." + _settingsConfig.hw.relay[i].obj + ".pin='" + relayPin + "';");
-            /*
+
             asyncRelay.push(async.apply(function(name, pin, callback){
                 eval("htriggers.orelay." + name + ".obj=new five.Relay(pin);");
-            },_settingsConfig.hw.relay[i].obj,_settingsConfig.hw.relay[i].pin));*/
+            },_settingsConfig.hw.relay[i].obj,_settingsConfig.hw.relay[i].pin));
 
         }
 

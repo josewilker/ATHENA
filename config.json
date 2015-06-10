@@ -43,13 +43,13 @@
                 "obj" : "temp",
                 "pname" : "Temperatura",
                 "pin" : 0
-            }/*,
+            },
             "1" : {
                 "obj" : "buzz",
                 "pname" : "Buzzer",
                 "pin" : 6,
                 "type" : "five-piezo"
-            }*/
+            }
         },
         "relay" : {
             "0" : {
