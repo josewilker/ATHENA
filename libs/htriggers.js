@@ -1,4 +1,4 @@
-
+var async = require('async');
 var mraa = require("mraa");
 var five = require("johnny-five");
 var edison = require("galileo-io");
@@ -17,33 +17,62 @@ htriggers.queue = {};
 htriggers.queue.list = [];
 htriggers.queue.states = [];
 
-htriggers.init = function() {
+var asyncTriggers = [];
 
-    var lcd = new five.LCD({
-        controller: _settingsConfig.hw.lcd.id
-    });
+htriggers.init = function() {
 
     btnLength = Object.keys(_settingsConfig.hw.button).length;
     ledLength = Object.keys(_settingsConfig.hw.led).length;
     sensLength = Object.keys(_settingsConfig.hw.sensor).length;
     relayLength = Object.keys(_settingsConfig.hw.relay).length;
+    lcdLength = Object.keys(_settingsConfig.hw.lcd.id).length;
+
+    if (lcdLength > 0) {
+
+        asyncTriggers.push(function(callback){
+
+            var lcd = new five.LCD({
+                controller: _settingsConfig.hw.lcd.id
+            });
+
+            htriggers.olcd = lcd;
+
+        });
+
+    }
 
     if (btnLength > 0) {
+
         for(i=0; i < btnLength; i++) {
+
             eval("htriggers.obutton." + _settingsConfig.hw.button[i].obj + "={};");
-            eval("htriggers.obutton." + _settingsConfig.hw.button[i].obj + ".obj=new mraa.Gpio(_settingsConfig.hw.button[i].pin);");
+            eval("htriggers.obutton." + _settingsConfig.hw.button[i].obj + ".obj=false;");
             eval("htriggers.obutton." + _settingsConfig.hw.button[i].obj + ".name='" + _settingsConfig.hw.button[i].pname + "';");
             eval("htriggers.obutton." + _settingsConfig.hw.button[i].obj + ".pin='" + _settingsConfig.hw.button[i].pin + "';");
+
+            asyncTriggers.push(function(callback){
+                eval("htriggers.obutton." + _settingsConfig.hw.button[i].obj + ".obj=new mraa.Gpio(_settingsConfig.hw.button[i].pin);");
+            });
+
         }
+
     }
 
     if (ledLength > 0) {
+
         for(i=0; i < ledLength; i++) {
+
             eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + "={};");
-            eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".obj=new five.Led(_settingsConfig.hw.led[i].pin);");
+            eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".obj=false;");
             eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".name='" + _settingsConfig.hw.led[i].pname + "';");
             eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".pin='" + _settingsConfig.hw.led[i].pin + "';");
+
+            asyncTriggers.push(function(callback){
+                eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".obj=new five.Led(_settingsConfig.hw.led[i].pin);");
+            });
+
         }
+
     }
 
     if (sensLength > 0) {
@@ -55,9 +84,13 @@ htriggers.init = function() {
                 if (_settingsConfig.hw.sensor[i].type == "five-piezo") {
 
                     eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + "={};");
+                    eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".obj=false;");
                     eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".name='" + _settingsConfig.hw.sensor[i].pname + "';");
                     eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".pin='" + _settingsConfig.hw.sensor[i].pin + "';");
-                    eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".obj=new five.Piezo(_settingsConfig.hw.sensor[i].pin);");
+
+                    asyncTriggers.push(function(callback){
+                        eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".obj=new five.Piezo(_settingsConfig.hw.sensor[i].pin);");
+                    });
 
                 }
 
@@ -68,34 +101,50 @@ htriggers.init = function() {
     }
 
     if (relayLength > 0) {
+
         for(i=0; i < relayLength; i++) {
-            console.log(_settingsConfig.hw.relay[i].obj);
+
             eval("htriggers.orelay." + _settingsConfig.hw.relay[i].obj + "={};");
-            eval("htriggers.orelay." + _settingsConfig.hw.relay[i].obj + ".obj=new five.Relay(_settingsConfig.hw.relay[i].pin);");
+            eval("htriggers.orelay." + _settingsConfig.hw.relay[i].obj + ".obj=false;");
             eval("htriggers.orelay." + _settingsConfig.hw.relay[i].obj + ".name='" + _settingsConfig.hw.relay[i].pname + "';");
             eval("htriggers.orelay." + _settingsConfig.hw.relay[i].obj + ".pin='" + _settingsConfig.hw.relay[i].pin + "';");
+
+            asyncTriggers.push(function(callback){
+                eval("htriggers.orelay." + _settingsConfig.hw.relay[i].obj + ".obj=new five.Relay(_settingsConfig.hw.relay[i].pin);");
+            });
+
         }
+
     }
 
-    htriggers.olcd = lcd;
-    htriggers.icon('check');
-    htriggers.icon('heart');
-    htriggers.icon('duck');
+    asyncTriggers.push(function(callback){
+
+        htriggers.icon('check');
+        htriggers.icon('heart');
+        htriggers.icon('duck');
+
+    });
+
+    async.series(asyncTriggers);
 
     return this;
 
 }
 
+// usefull functions
+
 htriggers.icon = function(icon) {
     htriggers.olcd.useChar(icon);
 }
 
+// - LCD
 htriggers.lcd = {};
 htriggers.lcd.write = function(line, position, message) {
     console.log(line + " " + position + " " + message);
     htriggers.olcd.cursor(line, position).print(message);
 }
 
+// - BUTTON
 htriggers.button = {};
 htriggers.button.flow = function(button, checkPressTime, press, release) {
 
@@ -126,12 +175,12 @@ htriggers.button.flow = function(button, checkPressTime, press, release) {
 
 }
 
+// - LED
 htriggers.led = {};
 htriggers.led.blink = function(led) {
     led.obj.blink(1000);
 }
 htriggers.led.on = function(led) {
-    //console.log(htriggers.oled.blue);
     led.obj.on();
 }
 htriggers.led.off = function(led) {
@@ -140,6 +189,5 @@ htriggers.led.off = function(led) {
 htriggers.led.stop = function(led) {
     led.obj.stop();
 }
-
 
 module.exports = htriggers;
