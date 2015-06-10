@@ -31,6 +31,8 @@ htriggers.init = function() {
 
         asyncTriggers.push(async.apply(function(id, callback){
 
+            console.log(id);
+
             var lcd = new five.LCD({
                 controller: id
             });
