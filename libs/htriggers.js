@@ -34,6 +34,7 @@ htriggers.init = function() {
             console.log(i);
 
             asyncTriggers.push(async.apply(function(pin, name, callback){
+
                 console.log(pin);
                 console.log(name);
                 //eval("htriggers.oled." + led.obj + "={};");
@@ -41,6 +42,8 @@ htriggers.init = function() {
                 //eval("htriggers.oled." + led.obj + ".name='" + led.pname + "';");
                 //eval("htriggers.oled." + led.obj + ".pin='" + led.pin + "';");
                 //eval("htriggers.oled." + led.obj + ".obj=new five.Led(" + led.pin + ");");
+                callback(null);
+
             },_settingsConfig.hw.led[i].pin, _settingsConfig.hw.led[i].obj));
 
         }
@@ -58,6 +61,8 @@ htriggers.init = function() {
             });
 
             htriggers.olcd = lcd;
+
+            callback(null);
 
         },_settingsConfig.hw.lcd.id));
 
@@ -134,7 +139,7 @@ htriggers.init = function() {
 
     });
 */
-    async.parallel(asyncTriggers, false);
+    async.waterfall(asyncTriggers, false);
 
     return this;
 
