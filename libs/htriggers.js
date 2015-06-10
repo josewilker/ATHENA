@@ -31,19 +31,13 @@ htriggers.init = function() {
 
         for(i=0; i < ledLength; i++) {
 
-            console.log(i);
+            eval("htriggers.oled." + objName + "={};");
+            eval("htriggers.oled." + objName + ".obj=false;");
+            eval("htriggers.oled." + objName + ".name='" + _settingsConfig.hw.led[i].pname + "';");
+            eval("htriggers.oled." + objName + ".pin='" + _settingsConfig.hw.led[i].pin + "';");
 
-            asyncTriggers.push(async.apply(function(pin, name, callback){
-
-                console.log(pin);
-                console.log(name);
-                //eval("htriggers.oled." + led.obj + "={};");
-                //eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".obj=false;");
-                //eval("htriggers.oled." + led.obj + ".name='" + led.pname + "';");
-                //eval("htriggers.oled." + led.obj + ".pin='" + led.pin + "';");
-                //eval("htriggers.oled." + led.obj + ".obj=new five.Led(" + led.pin + ");");
-                callback(null);
-
+            asyncTriggers.push(async.apply(function(pin, objName, callback){
+                eval("htriggers.oled." + objName + ".obj=new five.Led(" + pin + ");");
             },_settingsConfig.hw.led[i].pin, _settingsConfig.hw.led[i].obj));
 
         }
@@ -53,8 +47,6 @@ htriggers.init = function() {
     if (lcdLength > 0) {
 
         asyncTriggers.push(async.apply(function(id, callback){
-
-            console.log(id);
 
             var lcd = new five.LCD({
                 controller: id
@@ -67,7 +59,7 @@ htriggers.init = function() {
         },_settingsConfig.hw.lcd.id));
 
     }
-/*
+
     if (btnLength > 0) {
 
         for(i=0; i < btnLength; i++) {
@@ -78,7 +70,6 @@ htriggers.init = function() {
             eval("htriggers.obutton." + _settingsConfig.hw.button[i].obj + ".pin='" + _settingsConfig.hw.button[i].pin + "';");
 
             asyncTriggers.push(async.apply(function(name, pin, callback){
-                console.log(pin);
                 eval("htriggers.obutton." + name + ".obj=new mraa.Gpio(pin);");
             },_settingsConfig.hw.button[i].obj,_settingsConfig.hw.button[i].pin));
 
@@ -92,17 +83,19 @@ htriggers.init = function() {
 
             if (_settingsConfig.hw.sensor[i].type != undefined) {
 
-                if (_settingsConfig.hw.sensor[i].type == "five-piezo") {
+                switch(_settingsConfig.hw.sensor[i].type) {
+                    case "five-piezo":
 
-                    eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + "={};");
-                    eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".obj=false;");
-                    eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".name='" + _settingsConfig.hw.sensor[i].pname + "';");
-                    eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".pin='" + _settingsConfig.hw.sensor[i].pin + "';");
+                        eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + "={};");
+                        eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".obj=false;");
+                        eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".name='" + _settingsConfig.hw.sensor[i].pname + "';");
+                        eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".pin='" + _settingsConfig.hw.sensor[i].pin + "';");
 
-                    asyncTriggers.push(async.apply(function(name, pin, callback){
-                        eval("htriggers.osensor." + name + ".obj=new five.Piezo(pin);");
-                    },_settingsConfig.hw.sensor[i].obj,_settingsConfig.hw.sensor[i].pin));
+                        asyncTriggers.push(async.apply(function(name, pin, callback){
+                            eval("htriggers.osensor." + name + ".obj=new five.Piezo(pin);");
+                        },_settingsConfig.hw.sensor[i].obj,_settingsConfig.hw.sensor[i].pin));
 
+                    break;
                 }
 
             }
@@ -138,11 +131,8 @@ htriggers.init = function() {
         htriggers.icon('duck');
 
     });
-*/
-    async.series(asyncTriggers, function(err, result){
-        console.log(err);
-        console.log(result);
-    });
+
+    async.parallel(asyncTriggers, false);
 
     return this;
 
