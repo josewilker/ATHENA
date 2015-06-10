@@ -105,8 +105,7 @@ athena.init = function() {
             asyncButtons.push(function(callback){
                 //console.log(wdactions);
                 eval("athena.default.state=wdactions.io." + _settingsConfig.actionDefault + ".obj.default(objThis, events, objAthenaHW);");
-                eval("wdactions.io.songs.obj.beethoven(this, events);");
-
+                //eval("wdactions.io.songs.obj.beethoven(this, events);");
             });
         }
 
