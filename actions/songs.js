@@ -15,19 +15,28 @@ songs = {}
  */
 songs.config = function(config) {
     console.log("loading songs...");
+    htriggers.load('sensor');
 }
 
 songs.beethoven = function(context, events) {
+
     if (htriggers.osensor.buzz != undefined) {
+
         buzzer = htriggers.osensor.buzz.obj;
+
         var beethoven = songsl.load("beethovens-fifth");
         buzzer.play(beethoven);
+
     } else {
+
         console.log("Don't found buzzer...");
+
     }
+
 }
 
 songs.mario = function(context, events) {
+
     if (htriggers.osensor.buzz != undefined) {
 
         buzzer = htriggers.osensor.buzz.obj;
@@ -44,6 +53,7 @@ songs.mario = function(context, events) {
 }
 
 songs.sw = function(context, events) {
+
     if (htriggers.osensor.buzz != undefined) {
         buzzer = htriggers.osensor.buzz.obj;
         var sw = songsl.load("starwars-theme");

@@ -144,8 +144,43 @@ htriggers.init = function() {
 
 }
 
-// usefull functions
+htriggers.load = function(type) {
+    switch(type) {
+        case "led":
+            if (asyncLed) {
+                async.parallel(asyncLed, false);
+                asyncLed=false;
+            }
+        break;
+        case "lcd":
+            if (asyncLcd) {
+                async.parallel(asyncLcd, false);
+                asyncLcd=false;
+            }
 
+        break;
+        case "button":
+            if (asyncButton) {
+                async.parallel(asyncButton, false);
+                asyncLcd=false;
+            }
+        break;
+        case "sensor":
+            if (asyncSensor) {
+                async.parallel(asyncSensor, false);
+                asyncSensor=false;
+            }
+        break;
+        case "relay":
+            if (asyncRelay) {
+                async.parallel(asyncRelay, false);
+                asyncRelay=false;
+            }
+        break;
+    }
+}
+
+// usefull functions
 htriggers.icon = function(icon) {
 
     if (!htriggers.olcd) {
@@ -153,6 +188,7 @@ htriggers.icon = function(icon) {
     }
 
     htriggers.olcd.useChar(icon);
+
 }
 
 // - LCD
