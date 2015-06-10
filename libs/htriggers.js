@@ -27,22 +27,6 @@ htriggers.init = function() {
     relayLength = Object.keys(_settingsConfig.hw.relay).length;
     lcdLength = Object.keys(_settingsConfig.hw.lcd.id).length;
 
-    if (lcdLength > 0) {
-
-        asyncTriggers.push(async.apply(function(id, callback){
-
-            console.log(id);
-
-            var lcd = new five.LCD({
-                controller: id
-            });
-
-            htriggers.olcd = lcd;
-
-        },_settingsConfig.hw.lcd.id));
-
-    }
-
     if (ledLength > 0) {
 
         for(i=0; i < ledLength; i++) {
@@ -59,6 +43,22 @@ htriggers.init = function() {
             },_settingsConfig.hw.led[i].pin));
 
         }
+
+    }
+
+    if (lcdLength > 0) {
+
+        asyncTriggers.push(async.apply(function(id, callback){
+
+            console.log(id);
+
+            var lcd = new five.LCD({
+                controller: id
+            });
+
+            htriggers.olcd = lcd;
+
+        },_settingsConfig.hw.lcd.id));
 
     }
 /*
