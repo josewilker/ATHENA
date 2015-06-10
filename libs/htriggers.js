@@ -133,7 +133,7 @@ htriggers.init = function() {
 
     });
 */
-    async.series(asyncTriggers);
+    async.waterfall(asyncTriggers, false);
 
     return this;
 
