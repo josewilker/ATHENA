@@ -133,7 +133,7 @@ athena.greetings = function(seconds) {
 
     objLed = objAthenaHW.oled;
 
-        htriggers.led.on(objLed.activity);
+    htriggers.led.on(objLed.activity);
 
     // hello
     events.speak(0,"Hi!");
@@ -143,15 +143,15 @@ athena.greetings = function(seconds) {
     events.speak(0,"Hi! I'm " + _settingsConfig.name);
     athena.wait(seconds);
 
-        // activities
-        htriggers.led.on(objLed.error);
+    // activities
+    htriggers.led.on(objLed.error);
 
     // showing what are doing...
     events.speak(1,"Waking up...");
     athena.wait((seconds*2));
 
-        htriggers.led.off(objLed.error);
-        htriggers.led.off(objLed.activity);
+    htriggers.led.off(objLed.error);
+    htriggers.led.off(objLed.activity);
 
     events.speakClear();
 

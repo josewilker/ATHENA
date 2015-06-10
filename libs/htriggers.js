@@ -29,18 +29,18 @@ htriggers.init = function() {
 
     if (lcdLength > 0) {
 
-        asyncTriggers.push(function(callback){
+        asyncTriggers.push(async.apply(function(id, callback){
 
             var lcd = new five.LCD({
-                controller: _settingsConfig.hw.lcd.id
+                controller: id
             });
 
             htriggers.olcd = lcd;
 
-        });
+        },_settingsConfig.hw.lcd.id));
 
     }
-
+/*
     if (btnLength > 0) {
 
         for(i=0; i < btnLength; i++) {
@@ -50,8 +50,10 @@ htriggers.init = function() {
             eval("htriggers.obutton." + _settingsConfig.hw.button[i].obj + ".name='" + _settingsConfig.hw.button[i].pname + "';");
             eval("htriggers.obutton." + _settingsConfig.hw.button[i].obj + ".pin='" + _settingsConfig.hw.button[i].pin + "';");
 
+            buttonPIN = _settingsConfig.hw.button[i].pin;
+
             asyncTriggers.push(function(callback){
-                eval("htriggers.obutton." + _settingsConfig.hw.button[i].obj + ".obj=new mraa.Gpio(_settingsConfig.hw.button[i].pin);");
+                eval("htriggers.obutton." + _settingsConfig.hw.button[i].obj + ".obj=new mraa.Gpio(buttonPIN);");
             });
 
         }
@@ -67,8 +69,10 @@ htriggers.init = function() {
             eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".name='" + _settingsConfig.hw.led[i].pname + "';");
             eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".pin='" + _settingsConfig.hw.led[i].pin + "';");
 
+            ledPIN = _settingsConfig.hw.led[i].pin;
+
             asyncTriggers.push(function(callback){
-                eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".obj=new five.Led(_settingsConfig.hw.led[i].pin);");
+                eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".obj=new five.Led(ledPIN);");
             });
 
         }
@@ -88,8 +92,10 @@ htriggers.init = function() {
                     eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".name='" + _settingsConfig.hw.sensor[i].pname + "';");
                     eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".pin='" + _settingsConfig.hw.sensor[i].pin + "';");
 
+                    sensorPIN = _settingsConfig.hw.sensor[i].pin;
+
                     asyncTriggers.push(function(callback){
-                        eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".obj=new five.Piezo(_settingsConfig.hw.sensor[i].pin);");
+                        eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".obj=new five.Piezo(sensorPIN);");
                     });
 
                 }
@@ -104,13 +110,16 @@ htriggers.init = function() {
 
         for(i=0; i < relayLength; i++) {
 
+            relayPin = _settingsConfig.hw.relay[i].pin;
+            relayName = _settingsConfig.hw.relay[i].pname;
+
             eval("htriggers.orelay." + _settingsConfig.hw.relay[i].obj + "={};");
             eval("htriggers.orelay." + _settingsConfig.hw.relay[i].obj + ".obj=false;");
-            eval("htriggers.orelay." + _settingsConfig.hw.relay[i].obj + ".name='" + _settingsConfig.hw.relay[i].pname + "';");
-            eval("htriggers.orelay." + _settingsConfig.hw.relay[i].obj + ".pin='" + _settingsConfig.hw.relay[i].pin + "';");
+            eval("htriggers.orelay." + _settingsConfig.hw.relay[i].obj + ".name='" + relayName + "';");
+            eval("htriggers.orelay." + _settingsConfig.hw.relay[i].obj + ".pin='" + relayPin + "';");
 
-            asyncTriggers.push(function(callback){
-                eval("htriggers.orelay." + _settingsConfig.hw.relay[i].obj + ".obj=new five.Relay(_settingsConfig.hw.relay[i].pin);");
+            asyncTriggers.push(function(relayName, relayPin){
+                eval("htriggers.orelay." + _settingsConfig.hw.relay[i].obj + ".obj=new five.Relay(relayPIN);");
             });
 
         }
@@ -124,8 +133,8 @@ htriggers.init = function() {
         htriggers.icon('duck');
 
     });
-
-    async.series(asyncTriggers);
+    */
+    async.waterfall(asyncTriggers);
 
     return this;
 
