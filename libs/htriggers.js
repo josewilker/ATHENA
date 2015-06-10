@@ -41,6 +41,24 @@ htriggers.init = function() {
 
     }
 
+    if (ledLength > 0) {
+
+        for(i=0; i < ledLength; i++) {
+
+            eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + "={};");
+            eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".obj=false;");
+            eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".name='" + _settingsConfig.hw.led[i].pname + "';");
+            eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".pin='" + _settingsConfig.hw.led[i].pin + "';");
+
+            asyncTriggers.push(async.apply(function(name, pin, callback){
+                console.log(name);
+                eval("htriggers.oled." + name + ".obj=new five.Led(pin);");
+            },_settingsConfig.hw.led[i].obj,_settingsConfig.hw.led[i].pin));
+
+        }
+
+    }
+/*
     if (btnLength > 0) {
 
         for(i=0; i < btnLength; i++) {
@@ -54,23 +72,6 @@ htriggers.init = function() {
                 console.log(pin);
                 eval("htriggers.obutton." + name + ".obj=new mraa.Gpio(pin);");
             },_settingsConfig.hw.button[i].obj,_settingsConfig.hw.button[i].pin));
-
-        }
-
-    }
-
-    if (ledLength > 0) {
-
-        for(i=0; i < ledLength; i++) {
-
-            eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + "={};");
-            eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".obj=false;");
-            eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".name='" + _settingsConfig.hw.led[i].pname + "';");
-            eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".pin='" + _settingsConfig.hw.led[i].pin + "';");
-
-            asyncTriggers.push(async.apply(function(name, pin, callback){
-                eval("htriggers.oled." + name + ".obj=new five.Led(pin);");
-            },_settingsConfig.hw.led[i].obj,_settingsConfig.hw.led[i].pin));
 
         }
 
@@ -128,7 +129,7 @@ htriggers.init = function() {
         htriggers.icon('duck');
 
     });
-
+*/
     async.waterfall(asyncTriggers);
 
     return this;
