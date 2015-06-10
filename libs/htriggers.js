@@ -45,15 +45,15 @@ htriggers.init = function() {
 
         for(i=0; i < ledLength; i++) {
             console.log(i);
-            eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + "={};");
-            eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".obj=false;");
-            eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".name='" + _settingsConfig.hw.led[i].pname + "';");
-            eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".pin='" + _settingsConfig.hw.led[i].pin + "';");
 
-            asyncTriggers.push(async.apply(function(name, pin, callback){
-                console.log(name);
+            asyncTriggers.push(async.apply(function(led, callback){
+                console.log(led);
+                eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + "={};");
+                eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".obj=false;");
+                eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".name='" + led.pname + "';");
+                eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".pin='" + led.pin + "';");
                 eval("htriggers.oled." + name + ".obj=new five.Led(pin);");
-            },_settingsConfig.hw.led[i].obj,_settingsConfig.hw.led[i].pin));
+            },_settingsConfig.hw.led[i]));
 
         }
 
