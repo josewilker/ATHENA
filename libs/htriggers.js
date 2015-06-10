@@ -44,7 +44,7 @@ htriggers.init = function() {
     if (ledLength > 0) {
 
         for(i=0; i < ledLength; i++) {
-
+            console.log(i);
             eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + "={};");
             eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".obj=false;");
             eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".name='" + _settingsConfig.hw.led[i].pname + "';");
