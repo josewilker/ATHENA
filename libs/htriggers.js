@@ -19,6 +19,12 @@ htriggers.queue.states = [];
 
 var asyncTriggers = [];
 
+var asyncLed = [];
+var asyncLcd = [];
+var asyncButton = [];
+var asyncSensor = [];
+var asyncRelay = [];
+
 htriggers.init = function() {
 
     btnLength = Object.keys(_settingsConfig.hw.button).length;
@@ -35,10 +41,10 @@ htriggers.init = function() {
             eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".obj=false;");
             eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".name='" + _settingsConfig.hw.led[i].pname + "';");
             eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".pin='" + _settingsConfig.hw.led[i].pin + "';");
-
-            asyncTriggers.push(async.apply(function(pin, objName, callback){
+            /*
+            asyncLed.push(async.apply(function(pin, objName, callback){
                 eval("htriggers.oled." + objName + ".obj=new five.Led(" + pin + ");");
-            },_settingsConfig.hw.led[i].pin, _settingsConfig.hw.led[i].obj));
+            },_settingsConfig.hw.led[i].pin, _settingsConfig.hw.led[i].obj));*/
 
         }
 
@@ -46,7 +52,7 @@ htriggers.init = function() {
 
     if (lcdLength > 0) {
 
-        asyncTriggers.push(async.apply(function(id, callback){
+        asyncLcd.push(async.apply(function(id, callback){
 
             var lcd = new five.LCD({
                 controller: id
@@ -68,10 +74,10 @@ htriggers.init = function() {
             eval("htriggers.obutton." + _settingsConfig.hw.button[i].obj + ".obj=false;");
             eval("htriggers.obutton." + _settingsConfig.hw.button[i].obj + ".name='" + _settingsConfig.hw.button[i].pname + "';");
             eval("htriggers.obutton." + _settingsConfig.hw.button[i].obj + ".pin='" + _settingsConfig.hw.button[i].pin + "';");
-
-            asyncTriggers.push(async.apply(function(name, pin, callback){
+            /*
+            asyncButton.push(async.apply(function(name, pin, callback){
                 eval("htriggers.obutton." + name + ".obj=new mraa.Gpio(pin);");
-            },_settingsConfig.hw.button[i].obj,_settingsConfig.hw.button[i].pin));
+            },_settingsConfig.hw.button[i].obj,_settingsConfig.hw.button[i].pin));*/
 
         }
 
@@ -90,10 +96,10 @@ htriggers.init = function() {
                         eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".obj=false;");
                         eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".name='" + _settingsConfig.hw.sensor[i].pname + "';");
                         eval("htriggers.osensor." + _settingsConfig.hw.sensor[i].obj + ".pin='" + _settingsConfig.hw.sensor[i].pin + "';");
-
-                        asyncTriggers.push(async.apply(function(name, pin, callback){
+                        /*
+                        asyncSensor.push(async.apply(function(name, pin, callback){
                             eval("htriggers.osensor." + name + ".obj=new five.Piezo(pin);");
-                        },_settingsConfig.hw.sensor[i].obj,_settingsConfig.hw.sensor[i].pin));
+                        },_settingsConfig.hw.sensor[i].obj,_settingsConfig.hw.sensor[i].pin));*/
 
                     break;
                 }
@@ -115,10 +121,10 @@ htriggers.init = function() {
             eval("htriggers.orelay." + _settingsConfig.hw.relay[i].obj + ".obj=false;");
             eval("htriggers.orelay." + _settingsConfig.hw.relay[i].obj + ".name='" + relayName + "';");
             eval("htriggers.orelay." + _settingsConfig.hw.relay[i].obj + ".pin='" + relayPin + "';");
-
-            asyncTriggers.push(async.apply(function(name, pin, callback){
+            /*
+            asyncRelay.push(async.apply(function(name, pin, callback){
                 eval("htriggers.orelay." + name + ".obj=new five.Relay(pin);");
-            },_settingsConfig.hw.relay[i].obj,_settingsConfig.hw.relay[i].pin));
+            },_settingsConfig.hw.relay[i].obj,_settingsConfig.hw.relay[i].pin));*/
 
         }
 
@@ -147,6 +153,11 @@ htriggers.icon = function(icon) {
 // - LCD
 htriggers.lcd = {};
 htriggers.lcd.write = function(line, position, message) {
+
+    if (!htriggers.olcd) {
+        async.parallel(asyncLcd, false);
+    }
+
     console.log(line + " " + position + " " + message);
     htriggers.olcd.cursor(line, position).print(message);
 }
@@ -154,6 +165,10 @@ htriggers.lcd.write = function(line, position, message) {
 // - BUTTON
 htriggers.button = {};
 htriggers.button.flow = function(button, checkPressTime, press, release) {
+
+    if (!button.obj) {
+        async.parallel(asyncButton, false);
+    }
 
     button.obj.dir(mraa.DIR_IN);
 
@@ -184,17 +199,21 @@ htriggers.button.flow = function(button, checkPressTime, press, release) {
 
 // - LED
 htriggers.led = {};
-htriggers.led.blink = function(led) {
-    led.obj.blink(1000);
-}
 htriggers.led.on = function(led) {
+
+    if (!led.obj) {
+        async.parallel(asyncLed, false);
+    }
+
     led.obj.on();
 }
 htriggers.led.off = function(led) {
+
+    if (!led.obj) {
+        async.parallel(asyncLed, false);
+    }
+
     led.obj.off();
-}
-htriggers.led.stop = function(led) {
-    led.obj.stop();
 }
 
 module.exports = htriggers;

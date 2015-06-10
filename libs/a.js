@@ -12,7 +12,7 @@ objAthenaHW = athenaHWT.init();
 
 athenaEvents = require('./events.js');
 
-require('./states.js');
+require('../states/default.js');
 
 athenaActions = require('./wdactions.js');
 objAthenaActions = athenaActions.load();
