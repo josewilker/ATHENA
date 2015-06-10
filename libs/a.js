@@ -44,6 +44,7 @@ athena.init = function() {
         btnLength = Object.keys(_settingsConfig.hw.button).length;
 
         // - up mosca server (socket)
+        /*
         var server = new mosca.Server(_settingsConfig.socket);
 
         server.on('clientConnected', function(client) {
@@ -98,7 +99,7 @@ athena.init = function() {
         server.on('ready', function(){
             console.log('Mosca server is up and running.');
         });
-
+        */
         // -- do parallel actions
 
         if (_settingsConfig.actionDefault) {
