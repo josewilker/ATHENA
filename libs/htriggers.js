@@ -147,6 +147,11 @@ htriggers.init = function() {
 // usefull functions
 
 htriggers.icon = function(icon) {
+
+    if (!htriggers.olcd) {
+        async.parallel(asyncLcd, false);
+    }
+
     htriggers.olcd.useChar(icon);
 }
 
