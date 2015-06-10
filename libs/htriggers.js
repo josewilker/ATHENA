@@ -53,7 +53,7 @@ htriggers.init = function() {
                 //eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".obj=false;");
                 eval("htriggers.oled." + led.obj + ".name='" + led.pname + "';");
                 eval("htriggers.oled." + led.obj + ".pin='" + led.pin + "';");
-                eval("htriggers.oled." + led.obj + ".obj=new five.Led(pin);");
+                eval("htriggers.oled." + led.obj + ".obj=new five.Led(" + led.pin + ");");
             },_settingsConfig.hw.led[i]));
 
         }
