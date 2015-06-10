@@ -44,15 +44,16 @@ htriggers.init = function() {
     if (ledLength > 0) {
 
         for(i=0; i < ledLength; i++) {
+
             console.log(i);
 
             asyncTriggers.push(async.apply(function(led, callback){
                 console.log(led);
-                eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + "={};");
-                eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".obj=false;");
-                eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".name='" + led.pname + "';");
-                eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".pin='" + led.pin + "';");
-                eval("htriggers.oled." + name + ".obj=new five.Led(pin);");
+                eval("htriggers.oled." + led.obj + "={};");
+                //eval("htriggers.oled." + _settingsConfig.hw.led[i].obj + ".obj=false;");
+                eval("htriggers.oled." + led.obj + ".name='" + led.pname + "';");
+                eval("htriggers.oled." + led.obj + ".pin='" + led.pin + "';");
+                eval("htriggers.oled." + led.obj + ".obj=new five.Led(pin);");
             },_settingsConfig.hw.led[i]));
 
         }
