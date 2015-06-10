@@ -51,6 +51,7 @@ htriggers.init = function() {
             eval("htriggers.obutton." + _settingsConfig.hw.button[i].obj + ".pin='" + _settingsConfig.hw.button[i].pin + "';");
 
             asyncTriggers.push(async.apply(function(name, pin, callback){
+                console.log(pin);
                 eval("htriggers.obutton." + name + ".obj=new mraa.Gpio(pin);");
             },_settingsConfig.hw.button[i].obj,_settingsConfig.hw.button[i].pin));
 
