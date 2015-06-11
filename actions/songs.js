@@ -14,8 +14,11 @@ songs = {}
  * @return {[type]} [description]
  */
 songs.config = function(config) {
+
     console.log("loading songs...");
+
     htriggers.load('sensor');
+
 }
 
 songs.beethoven = function(context, events) {
@@ -40,27 +43,31 @@ songs.mario = function(context, events) {
     if (htriggers.osensor.buzz != undefined) {
 
         buzzer = htriggers.osensor.buzz.obj;
-        var beethoven = songsl.load("mario-intro");
-        buzzer.play(beethoven);
-
-        if (htriggers.orelay.l1.obj != undefined) {
-            htriggers.orelay.l1.obj.toggle();
-        }
+        var mario = songsl.load("mario-intro");
+        buzzer.play(mario);
 
     } else {
+
         console.log("Don't found buzzer...");
+
     }
+
 }
 
 songs.sw = function(context, events) {
 
     if (htriggers.osensor.buzz != undefined) {
+
         buzzer = htriggers.osensor.buzz.obj;
         var sw = songsl.load("starwars-theme");
         buzzer.play(sw);
+
     } else {
+
         console.log("Don't found buzzer...");
+
     }
+
 }
 
 module.exports = songs;

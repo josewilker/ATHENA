@@ -81,9 +81,6 @@ athena.init = function() {
                             events.speakClear();
 
                         break;
-                        default:
-
-                        break;
                     }
 
                 }
