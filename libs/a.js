@@ -90,10 +90,6 @@ athena.init = function() {
             }
         });
 
-        server.on('ready', function(){
-            console.log('Mosca server is up and running.');
-        });
-
         // -- do parallel actions
 
         // @todo :P
@@ -101,6 +97,7 @@ athena.init = function() {
         // So, we need fix it, but I don't have time now and I don't have two buttons. ;P
         // @todo :P
 
+        /*
         asyncButtons.push(function(callback){
             require("./btn0.js")(objThis, objButton, objLed);
         });
@@ -109,7 +106,7 @@ athena.init = function() {
             require("./btn1.js")(objThis, objButton, objLed);
         });
 
-        async.parallel(asyncButtons, false);
+        async.parallel(asyncButtons, false);*/
 
         // -- do default action
 
@@ -120,6 +117,10 @@ athena.init = function() {
                 //eval("wdactions.io.songs.obj.beethoven(this, events);");
             //});
         }
+
+        server.on('ready', function(){
+            console.log('ATHENA is up and running.');
+        });
 
     }
 
