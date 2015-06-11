@@ -1,16 +1,21 @@
 [
     {
-        "topic" : "rc.ip",
+        "topic" : "show.ip",
         "cmd" : "_ip.run(this, events)",
         "wait" : "10"
     },
     {
-        "topic" : "rc.mario",
+        "topic" : "songs.mario",
         "cmd" : "_songs.mario(this, events)",
         "wait" : "2"
     },
     {
-        "topic" : "rc.l1",
+        "topic" : "songs.starwars",
+        "cmd" : "_songs.sw(this, events)",
+        "wait" : "2"
+    },
+    {
+        "topic" : "lights.l1",
         "cmd" : "_lights.toggle1(this, events)",
         "wait" : "2"
     },

@@ -50,6 +50,7 @@ athena.init = function() {
             for(i=0; i < rc.length; i++) {
 
                 if (rc[i]['topic'] == topic) {
+
                     fc = rc[i]['cmd'].charAt(0);
 
                     switch(fc) {
@@ -74,7 +75,6 @@ athena.init = function() {
                             console.log("working with a remote call...");
                             cdot = rc[i]['cmd'].indexOf(".",1);
                             cxp = "wdactions.io."+rc[i]['cmd'].substr(1,cdot)+"obj."+rc[i]['cmd'].substr(cdot+1,rc[i]['cmd'].length)+";";
-                            console.log(cxp);
                             eval(cxp);
 
                             console.log("waiting ... " + rc[i]['wait'] + " seconds");
