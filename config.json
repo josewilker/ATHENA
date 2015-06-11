@@ -80,6 +80,11 @@
             "text" : "Sons",
             "lib" : "songs",
             "action" : "songs.js"
+        },
+        "4" : {
+            "text" : "Lights",
+            "lib" : "lights",
+            "action" : "lights.js"
         }
     }
 }
