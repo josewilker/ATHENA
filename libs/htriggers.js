@@ -201,9 +201,7 @@ htriggers.lcd.write = function(line, position, message) {
 htriggers.button = {};
 htriggers.button.flow = function(button, checkPressTime, press, release) {
 
-    if (!button.obj) {
-        async.parallel(asyncButton, false);
-    }
+    htriggers.load('button');
 
     button.obj.dir(mraa.DIR_IN);
 

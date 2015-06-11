@@ -97,16 +97,17 @@ athena.init = function() {
         // So, we need fix it, but I don't have time now and I don't have two buttons. ;P
         // @todo :P
 
-        /*
+
         asyncButtons.push(function(callback){
             require("./btn0.js")(objThis, objButton, objLed);
         });
 
+        /*
         asyncButtons.push(function(callback){
             require("./btn1.js")(objThis, objButton, objLed);
-        });
+        });*/
 
-        async.parallel(asyncButtons, false);*/
+        async.parallel(asyncButtons, false);
 
         // -- do default action
 
