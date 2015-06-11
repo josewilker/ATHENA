@@ -59,7 +59,7 @@
             }
         }
     },
-    "actionDefault" : "mtemp",
+    "actionDefault" : "greetings",
     "actions" : {
         "0" : {
             "text" : "Greetings",
