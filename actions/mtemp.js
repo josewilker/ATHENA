@@ -26,7 +26,6 @@ mtemp.celsius = false;
 mtemp.config = function(config) {
     mtemp.config = config;
     mtemp.default.pin = config.hw.sensor[0].pin;
-    console.log("configurando mtemp...");
 }
 
 /**

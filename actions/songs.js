@@ -14,11 +14,7 @@ songs = {}
  * @return {[type]} [description]
  */
 songs.config = function(config) {
-
-    console.log("loading songs...");
-
     htriggers.load('sensor');
-
 }
 
 songs.beethoven = function(context, events) {

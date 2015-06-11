@@ -10,6 +10,11 @@
         "wait" : "2"
     },
     {
+        "topic" : "rc.l1",
+        "cmd" : "_lights.toggle1(this, events)",
+        "wait" : "2"
+    },
+    {
         "topic" : "state.index",
         "cmd" : "-index",
         "type" : "input"

@@ -8,7 +8,6 @@ athenaIp.ip = false;
 
 athenaIp.config = function(build) {
     athenaIp.ip = require('ip');
-    console.log("Building ip...");
 }
 
 athenaIp.run = function(context, events) {
