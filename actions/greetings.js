@@ -15,6 +15,8 @@ athenaGreetings.config = function(build) {
     htriggers.load('led');
     htriggers.load('lcd');
 
+    console.log("Building greetings...");
+
 }
 
 athenaGreetings.default = function(context, events) {
