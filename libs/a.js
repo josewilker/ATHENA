@@ -73,7 +73,9 @@ athena.init = function() {
 
                             console.log("working with a remote call...");
                             cdot = rc[i]['cmd'].indexOf(".",1);
-                            eval("wdactions.io."+rc[i]['cmd'].substr(1,cdot)+"obj."+rc[i]['cmd'].substr(cdot+1,rc[i]['cmd'].length)+";");
+                            cxp = "wdactions.io."+rc[i]['cmd'].substr(1,cdot)+"obj."+rc[i]['cmd'].substr(cdot+1,rc[i]['cmd'].length)+";";
+                            console.log(cxp);
+                            eval(cxp);
 
                             console.log("waiting ... " + rc[i]['wait'] + " seconds");
                             eval("athena.wait(" + rc[i]['wait'] + ");");
