@@ -4,7 +4,7 @@ require('../libs/scope.js');
 var sleep = require('sleep');
 var async = require('async');
 
-athenaGreetings = {}
+athenaGreetings = {};
 
 /**
  * [function description]
@@ -50,7 +50,8 @@ athenaGreetings.default = function(context, events) {
 }
 
 athenaGreetings.run = function(context, events) {
-	athenaGreetings.default(context, events);
+	//athenaGreetings.default(context, events);
+	console.log("greetins run...");
 }
 
 

@@ -25,8 +25,6 @@ athena.default.state = {};
 
 athena.init = function() {
 
-    //athena.greetings(3);
-
     if (athena.isReady()) {
 
         objThis = this;
@@ -41,7 +39,6 @@ athena.init = function() {
 
         btnLength = Object.keys(_settingsConfig.hw.button).length;
 
-        // - up mosca server (socket)
         var server = new mosca.Server(_settingsConfig.socket);
 
         server.on('clientConnected', function(client) {
@@ -99,14 +96,6 @@ athena.init = function() {
 
         // -- do parallel actions
 
-        if (_settingsConfig.actionDefault) {
-            //asyncButtons.push(function(callback){
-                //console.log(wdactions);
-                eval("athena.default.state=wdactions.io." + _settingsConfig.actionDefault + ".obj.default(objThis, events, objAthenaHW);");
-                //eval("wdactions.io.songs.obj.beethoven(this, events);");
-            //});
-        }
-
         // @todo :P
         // HOUSTON! WE HAVE A PROBLEM HERE!
         // So, we need fix it, but I don't have time now and I don't have two buttons. ;P
@@ -122,38 +111,19 @@ athena.init = function() {
 
         async.parallel(asyncButtons, false);
 
+        // -- do default action
+
+        if (_settingsConfig.actionDefault) {
+            //asyncButtons.push(function(callback){
+                //console.log(wdactions);
+                //eval("athena.default.state=wdactions.io." + _settingsConfig.actionDefault + ".obj.default(objThis, events, objAthenaHW);");
+                //eval("wdactions.io.songs.obj.beethoven(this, events);");
+            //});
+        }
+
     }
 
 }
-
-/*
-athena.greetings = function(seconds) {
-
-    objLed = objAthenaHW.oled;
-
-    htriggers.led.on(objLed.activity);
-
-    // hello
-    events.speak(0,"Hi!");
-    athena.wait(seconds);
-
-    // greetings
-    events.speak(0,"Hi! I'm " + _settingsConfig.name);
-    athena.wait(seconds);
-
-    // activities
-    htriggers.led.on(objLed.error);
-
-    // showing what are doing...
-    events.speak(1,"Waking up...");
-    athena.wait((seconds*2));
-
-    htriggers.led.off(objLed.error);
-    htriggers.led.off(objLed.activity);
-
-    events.speakClear();
-
-}*/
 
 athena.wait = function(t) {
     sleep.sleep(t);

@@ -60,7 +60,9 @@ htriggers.init = function() {
 
             htriggers.olcd = lcd;
 
-            callback(null);
+            htriggers.olcd.icon('check');
+            htriggers.olcd.icon('heart');
+            htriggers.olcd.icon('duck');
 
         },_settingsConfig.hw.lcd.id));
 
@@ -130,11 +132,7 @@ htriggers.init = function() {
 
     }
 
-    htriggers.icon('check');
-    htriggers.icon('heart');
-    htriggers.icon('duck');
-
-    async.parallel(asyncTriggers, false);
+    //async.parallel(asyncTriggers, false);
 
     return this;
 
