@@ -62,16 +62,21 @@
     "actionDefault" : "mtemp",
     "actions" : {
         "0" : {
+            "text" : "Greetings",
+            "lib" : "greetings",
+            "action" : "greetings.js"
+        },
+        "1" : {
             "text" : "Temperatura",
             "action" : "mtemp.js",
             "lib" : "mtemp"
         },
-        "1" : {
+        "2" : {
             "text" : "Endereço IP",
             "lib" : "ip",
             "action" : "ip.js"
         },
-        "2" : {
+        "3" : {
             "text" : "Sons",
             "lib" : "songs",
             "action" : "songs.js"

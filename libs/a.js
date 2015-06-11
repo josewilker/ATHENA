@@ -25,11 +25,9 @@ athena.default.state = {};
 
 athena.init = function() {
 
-    athena.greetings(3);
+    //athena.greetings(3);
 
     if (athena.isReady()) {
-
-        events.speak(0,"UP! :heart:");
 
         objThis = this;
 
@@ -128,6 +126,7 @@ athena.init = function() {
 
 }
 
+/*
 athena.greetings = function(seconds) {
 
     objLed = objAthenaHW.oled;
@@ -154,7 +153,7 @@ athena.greetings = function(seconds) {
 
     events.speakClear();
 
-}
+}*/
 
 athena.wait = function(t) {
     sleep.sleep(t);
