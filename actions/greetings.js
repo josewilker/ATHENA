@@ -19,6 +19,8 @@ athenaGreetings.config = function(build) {
 
 athenaGreetings.default = function(context, events) {
 
+	seconds = 3;
+
 	objLed = htriggers.oled;
 
     htriggers.led.on(objLed.activity);
