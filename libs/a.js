@@ -100,11 +100,11 @@ athena.init = function() {
         // -- do parallel actions
 
         if (_settingsConfig.actionDefault) {
-            asyncButtons.push(function(callback){
+            //asyncButtons.push(function(callback){
                 //console.log(wdactions);
                 eval("athena.default.state=wdactions.io." + _settingsConfig.actionDefault + ".obj.default(objThis, events, objAthenaHW);");
                 //eval("wdactions.io.songs.obj.beethoven(this, events);");
-            });
+            //});
         }
 
         // @todo :P

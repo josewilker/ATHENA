@@ -20,7 +20,7 @@ module.exports = function(objThis, objButton, objLed){
             events.speakClear();
 
             tact = 'input';
-            console.log("oie");
+
             switch(objThis.nextStep) {
                 case 1: // initial state
 
