@@ -53,4 +53,4 @@ athenaGreetings.run = function(context, events) {
 
 
 
-module.exports = athenaIp;
+module.exports = athenaGreetings;
