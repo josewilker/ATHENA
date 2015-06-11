@@ -22,4 +22,4 @@ lights.toggle1 = function(context, events) {
     htriggers.orelay.l1.obj.toggle();
 }
 
-module.exports = songs;
+module.exports = lights;
