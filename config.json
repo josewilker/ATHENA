@@ -85,6 +85,11 @@
             "text" : "Lights",
             "lib" : "lights",
             "action" : "lights.js"
+        },
+        "5" : {
+            "text" : "Flow",
+            "lib" : "flow",
+            "action" : "flow.js"
         }
     }
 }
