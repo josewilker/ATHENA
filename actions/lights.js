@@ -18,7 +18,8 @@ lights.config = function(config) {
 }
 
 lights.toggle1 = function(context, events) {
-    htriggers.orelay.l1.toggle();
+    console.log("toggle lights");
+    htriggers.orelay.l1.obj.toggle();
 }
 
 module.exports = songs;
