@@ -130,13 +130,9 @@ htriggers.init = function() {
 
     }
 
-    asyncTriggers.push(function(callback){
-
-        htriggers.icon('check');
-        htriggers.icon('heart');
-        htriggers.icon('duck');
-
-    });
+    htriggers.icon('check');
+    htriggers.icon('heart');
+    htriggers.icon('duck');
 
     async.parallel(asyncTriggers, false);
 
