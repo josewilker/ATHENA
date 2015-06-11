@@ -99,7 +99,7 @@ athena.init = function() {
 
 
         //asyncButtons.push(function(callback){
-            require("./btn0.js")(objThis, objButton, objLed);
+            //require("./btn0.js")(objThis, objButton, objLed);
         //});
 
         /*
