@@ -16,14 +16,16 @@ didact.config = function(build) {
 
     if (didact.server == false) {
         console.log(_settingsConfig.interface.voice);
-        didact.server = new mosca.Server(_settingsConfig.interface.voice);
+        server = new mosca.Server(_settingsConfig.interface.voice);
     }
 
     console.log(didact.server);
 
-    didact.server.on('ready', function(){
+    server.on('ready', function(){
         console.log("didact connected!");
     });
+
+    didact.server = server;
 
 }
 
