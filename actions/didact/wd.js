@@ -5,6 +5,7 @@ var sleep = require('sleep');
 var async = require('async');
 
 didact = {};
+didact.server = undefined;
 
 /**
  * [function description]
