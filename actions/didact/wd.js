@@ -14,7 +14,7 @@ didact.server = undefined;
 didact.config = function(build) {
 
     if (didact.server == undefined) {
-        var didact.server = new mosca.Server(_settingsConfig.interface.voice);
+        didact.server = new mosca.Server(_settingsConfig.interface.voice);
     }
 
 }
