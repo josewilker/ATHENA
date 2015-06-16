@@ -3,10 +3,10 @@ require('../../libs/scope.js');
 
 var sleep = require('sleep');
 var async = require('async');
-var mosca = require('mosca');
+var mosca = require('mqtt');
 
 didact = {};
-didact.server = false;
+didact.client = false;
 
 /**
  * [function description]
@@ -14,24 +14,22 @@ didact.server = false;
  */
 didact.config = function(build) {
 
-    if (didact.server == false) {
-        console.log(_settingsConfig.interface.voice);
-        server = new mosca.Server(_settingsConfig.interface.voice);
+    var settings = {
+        keepalive: 10000,
+        protocolId: 'MQIsdp',
+        protocolVersion: 3,
+        clientId: 'ATHENA-DIDACT'
     }
 
-    console.log(didact.server);
-
-    server.on('ready', function(){
-        console.log("didact connected!");
-    });
-
-    didact.server = server;
+    if (didact.client == false) {
+        didact.client = mqtt.createClient(_settingsConfig.interface.voice.port, _settingsConfig.interface.voice.host, settings);
+    }
 
 }
 
 didact.talk = function(context, events, message, talkType) {
 
-    if (didact.server == false) {
+    if (didact.client == false) {
         didact.config();
     }
 
@@ -46,15 +44,7 @@ didact.talk = function(context, events, message, talkType) {
         break;
     }
 
-    var message = {
-        topic: tTalk + message,
-        qos: 0, // 0, 1, or 2
-        retain: false // or true
-    };
-
-    didact.server.publish(message, function() {
-      console.log('done!');
-    });
+    client.publish(tTalk + message, '01');
 
 }
 
