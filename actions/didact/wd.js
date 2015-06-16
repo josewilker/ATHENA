@@ -3,6 +3,7 @@ require('../../libs/scope.js');
 
 var sleep = require('sleep');
 var async = require('async');
+var mosca = require('mosca');
 
 didact = {};
 didact.server = undefined;
