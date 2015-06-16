@@ -97,7 +97,7 @@
             "lib" : "flow",
             "action" : "flow.js"
         },
-        "5" : {
+        "6" : {
             "text" : "Didact",
             "lib" : "didact",
             "action" : "didact.js"
