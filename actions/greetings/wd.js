@@ -19,7 +19,7 @@ greetings.config = function(build) {
 
 greetings.default = function(context, events) {
 
-	seconds = 3;
+	seconds = 1;
 
 	objLed = htriggers.oled;
 
