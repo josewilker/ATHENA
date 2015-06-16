@@ -1,5 +1,5 @@
 
-require('../libs/scope.js');
+require('./libs/scope.js');
 
 var sleep = require('sleep');
 var async = require('async');
