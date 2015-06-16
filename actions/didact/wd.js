@@ -15,6 +15,8 @@ didact.client = false;
 didact.config = function(build) {
 
     var settings = {
+        host : _settingsConfig.interface.voice.host,
+        port : _settingsConfig.interface.voice.port,
         keepalive: 10000,
         protocolId: 'MQIsdp',
         protocolVersion: 3,
@@ -22,7 +24,7 @@ didact.config = function(build) {
     }
 
     if (didact.client == false) {
-        didact.client = mqtt.createClient(_settingsConfig.interface.voice.port, _settingsConfig.interface.voice.host, settings);
+        didact.client = mqtt.connect("mqtt://" + _settingsConfig.interface.voice.host,settings);
     }
 
 }
