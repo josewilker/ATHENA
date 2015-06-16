@@ -44,7 +44,7 @@ didact.talk = function(context, events, message, talkType) {
         break;
     }
 
-    client.publish(tTalk + message, '01');
+    didact.client.publish(tTalk + message, '01');
 
 }
 
