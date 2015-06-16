@@ -28,6 +28,7 @@ greetings.default = function(context, events) {
     // hello
     helloMessage = "Hi!";
     events.speak(0,helloMessage);
+    console.log(wdactions.io);
     wdactions.io.didact.obj.talk(objThis, events, helloMessage, 1);
 
     athena.wait(seconds);
