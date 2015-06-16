@@ -6,7 +6,7 @@ var async = require('async');
 var mosca = require('mosca');
 
 didact = {};
-didact.server = undefined;
+didact.server = false;
 
 /**
  * [function description]
@@ -14,7 +14,8 @@ didact.server = undefined;
  */
 didact.config = function(build) {
 
-    if (didact.server == undefined) {
+    if (didact.server == false) {
+        console.log(_settingsConfig.interface.voice);
         didact.server = new mosca.Server(_settingsConfig.interface.voice);
     }
 
@@ -28,7 +29,7 @@ didact.config = function(build) {
 
 didact.talk = function(context, events, message, talkType) {
 
-    if (didact.server == undefined) {
+    if (didact.server == false) {
         didact.config();
     }
 
