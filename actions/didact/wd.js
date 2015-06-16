@@ -44,7 +44,9 @@ didact.talk = function(context, events, message, talkType) {
         break;
     }
 
-    didact.client.publish(tTalk + message, '01');
+    async.parallel(function(){
+        didact.client.publish(tTalk + message, '01');
+    });
 
 }
 

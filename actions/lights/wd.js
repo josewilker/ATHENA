@@ -15,6 +15,7 @@ lights.config = function(config) {
 
 lights.toggle1 = function(context, events) {
     console.log("toggle lights");
+    wdactions.io.didact.obj.talk(objThis, events, "lights", 1);
     htriggers.orelay.l1.obj.toggle();
 }
 
