@@ -3,7 +3,7 @@ require('../../libs/scope.js');
 
 var sleep = require('sleep');
 var async = require('async');
-var mosca = require('mqtt');
+var mqtt = require('mqtt');
 
 didact = {};
 didact.client = false;
