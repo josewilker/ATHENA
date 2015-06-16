@@ -59,8 +59,8 @@ greetings.default = function(context, events) {
 
 }
 
-greetings.run = function(context, events) {
-	//athenaGreetings.default(context, events);
+greetings.begin = function(context, events) {
+	greetings.default(context, events);
 	console.log("greetins run...");
 }
 
