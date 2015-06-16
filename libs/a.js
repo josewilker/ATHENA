@@ -80,8 +80,6 @@ athena.init = function() {
                             console.log("waiting ... " + rc[i]['wait'] + " seconds");
                             eval("athena.wait(" + rc[i]['wait'] + ");");
 
-                            events.speakClear();
-
                         break;
                     }
 

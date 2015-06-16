@@ -4,20 +4,20 @@ require('../libs/scope.js');
 var sleep = require('sleep');
 var async = require('async');
 
-athenaGreetings = {};
+greetings = {};
 
 /**
  * [function description]
  * @return {[type]} [description]
  */
-athenaGreetings.config = function(build) {
+greetings.config = function(build) {
 
     htriggers.load('led');
     htriggers.load('lcd');
 
 }
 
-athenaGreetings.default = function(context, events) {
+greetings.default = function(context, events) {
 
 	seconds = 3;
 
@@ -26,18 +26,27 @@ athenaGreetings.default = function(context, events) {
     htriggers.led.on(objLed.activity);
 
     // hello
-    events.speak(0,"Hi!");
+    helloMessage = "Hi!";
+    events.speak(0,helloMessage);
+    wdactions.io.didact.obj.talk(objThis, events, helloMessage, 1);
+
     athena.wait(seconds);
 
     // greetings
-    events.speak(0,"Hi! I'm " + _settingsConfig.name);
+    greetingsMessage = "I am " + _settingsConfig.name
+    events.speak(0,greetingsMessage);
+    wdactions.io.didact.obj.talk(objThis, events, greetingsMessage, 1);
+
     athena.wait(seconds);
 
     // activities
     htriggers.led.on(objLed.error);
 
     // showing what are doing...
-    events.speak(1,"Waking up...");
+    loadingMessage = "Waking up...";
+    events.speak(1,loadingMessage);
+    wdactions.io.didact.obj.talk(objThis, events, loadingMessage, 1);
+
     athena.wait((seconds*2));
 
     htriggers.led.off(objLed.error);
@@ -49,11 +58,11 @@ athenaGreetings.default = function(context, events) {
 
 }
 
-athenaGreetings.run = function(context, events) {
+greetings.run = function(context, events) {
 	//athenaGreetings.default(context, events);
 	console.log("greetins run...");
 }
 
 
 
-module.exports = athenaGreetings;
+module.exports = greetings;

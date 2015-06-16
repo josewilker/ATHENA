@@ -4,6 +4,12 @@
     "socket" : {
         "port" : 1884
     },
+    "interface" : {
+        "voice" : {
+            "host" : "192.168.0.11",
+            "port" : "1882"
+        }
+    },
     "hw" : {
         "lcd" : {
             "id" : "JHD1313M1"
@@ -90,6 +96,11 @@
             "text" : "Flow",
             "lib" : "flow",
             "action" : "flow.js"
+        },
+        "5" : {
+            "text" : "Didact",
+            "lib" : "didact",
+            "action" : "didact.js"
         }
     }
 }

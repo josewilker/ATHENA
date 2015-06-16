@@ -1,4 +1,4 @@
-/* -- perfect include for groove -- */
+/* -- perfect include for groove kit -- */
 var mraa = require("mraa");
 var five = require("johnny-five");
 var edison = require("galileo-io");
@@ -6,12 +6,8 @@ var board = new five.Board({
     io: new edison()
 });
 
-lights = {}
+lights = {};
 
-/**
- * [function description]
- * @return {[type]} [description]
- */
 lights.config = function(config) {
     htriggers.load('relay');
 
