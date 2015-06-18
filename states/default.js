@@ -3,15 +3,22 @@
 // 1. Index
 htriggers.queue.states['index'] = [];
 htriggers.queue.states['index']['input'] = function() {
+
     htriggers.led.off(htriggers.oled.error);
     htriggers.led.off(htriggers.oled.activity);
+
     events.speak(0,"A.T.H.E.N.A");
-    events.speak(1,"B1/M  B2/I");
+    events.speak(1,"Running...");
+
 };
 htriggers.queue.states['index']['output'] = function() {
-    wdactions.io.mtemp.obj.default(this, events);
+
+    console.log("teste output index");
+
 };
 
+
+/*
 // 2. MSG 1
 htriggers.queue.states['msg1'] = [];
 htriggers.queue.states['msg1']['input'] = function() {
@@ -25,7 +32,9 @@ htriggers.queue.states['msg1']['input'] = function() {
 
 };
 htriggers.queue.states['msg1']['output'] = function() {
+
     wdactions.io.mtemp.obj.default(this, events);
+
 };
 
 // 3. TEMP ATUAL
@@ -86,5 +95,5 @@ htriggers.queue.states['check-temp']['input'] = function() {
 htriggers.queue.states['check-temp']['output'] = function() {
     wdactions.io.mtemp.obj.default(this, events);
 };
-
+*/
 /* -- states end -- */

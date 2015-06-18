@@ -13,14 +13,14 @@ wdactions.getAll = function(dirPath) {
 wdactions.load = function() {
 
     objIO = wdactions.io;
-    files = wdactions.getAll("./actions/"); //['greetings.js','ip.js', 'mtemp.js', 'songs.js', 'flow.js', 'lights.js', 'didact.js'];
+    files = wdactions.getAll(_actionsFolder);
     arrayFilesLength = Object.keys(_settingsConfig.actions).length;
     for(ari=0; ari < arrayFilesLength; ari++) {
 
-        freplace = files[ari]; //files[ari].replace(".js","");
+        freplace = files[ari];
 
         eval("objIO." + freplace + "={};");
-        eval("objIO." + freplace + ".obj=require('../actions/" + freplace + "/wd.js');");
+        eval("objIO." + freplace + ".obj=require('" + _actionsRelativeFolder + freplace + "/" + _actionsDefaultFile + "');");
 
         console.log("Loading action " + freplace + "...");
 
