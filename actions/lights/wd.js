@@ -15,8 +15,10 @@ lights.config = function(config) {
 
 lights.toggle1 = function(context, events) {
     console.log("toggle lights");
-    wdactions.io.didact.obj.talk(objThis, events, "lights", 1);
+    wdactions.io.didact.obj.talk(objThis, events, "Gerando impulso elétrico remoto...", 1);
     htriggers.orelay.l1.obj.toggle();
+    athena.wait(5);
+    wdactions.io.didact.obj.talk(objThis, events, "Gerado com sucesso.", 1);
 }
 
 module.exports = lights;
