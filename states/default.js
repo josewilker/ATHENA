@@ -16,7 +16,7 @@ htriggers.queue.states['index']['input'] = function() {
 htriggers.queue.states['index']['output'] = function() {
 
     console.log("teste");
-    wdactions.io.didact.obj.talk(this, events, "Olá, estou disponível...", 1);
+    wdactions.io.didact.obj.talk(this, events, "Olá estou disponível...", 1);
 
 };
 
