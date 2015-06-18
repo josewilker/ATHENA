@@ -47,7 +47,7 @@ htriggers.queue.states['temp']['output'] = function() {
     events.speak(0,"TEMPERATURA :heart:");
     events.speak(1,"AMBIENTE: " + atualTemp);
 
-    wdactions.io.didact.obj.talk(this, events, "Ok, A temperatura do ambiente é " + atualTemp + " graus celsius", 1);
+    wdactions.io.didact.obj.talk(this, events, "Ok ... A temperatura do ambiente é " + atualTemp + " graus celsius", 1);
 
     athena.wait(5);
 
