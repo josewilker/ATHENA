@@ -20,7 +20,7 @@ didact.config = function(build) {
         keepalive: 10000,
         protocolId: 'MQIsdp',
         protocolVersion: 3,
-        clientId: 'ATHENA-DIDACT'
+        clientId: 'DIDACT'
     }
 
     if (didact.client == false) {
