@@ -13,7 +13,7 @@ wdactions.getAll = function(dirPath) {
 wdactions.load = function() {
 
     objIO = wdactions.io;
-    files = wdactions.getAll(_actionsFolder);
+    files = wdactions.getAll(_actionsPathFolder);
     arrayFilesLength = Object.keys(_settingsConfig.actions).length;
     for(ari=0; ari < arrayFilesLength; ari++) {
 
