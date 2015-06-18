@@ -15,7 +15,7 @@ htriggers.queue.states['index']['input'] = function() {
 };
 htriggers.queue.states['index']['output'] = function() {
 
-    wdactions.io.didact.obj.talk(this, events, "#-Olá, estou disponível...");
+    wdactions.io.didact.obj.talk(this, events, "#-Olá, estou disponível...", 1);
 
 };
 
@@ -33,7 +33,7 @@ htriggers.queue.states['temp']['input'] = function() {
 
     htriggers.led.off(htriggers.oled.activity);
 
-    wdactions.io.didact.obj.talk(this, events, "#-Deseja saber a temperatura atual ?");
+    wdactions.io.didact.obj.talk(this, events, "#-Deseja saber a temperatura atual ?", 1);
 
     athena.wait(5);
 
@@ -46,7 +46,7 @@ htriggers.queue.states['temp']['output'] = function() {
     events.speak(0,"TEMPERATURA :heart:");
     events.speak(1,"ATUAL: " + atualTemp);
 
-    wdactions.io.didact.obj.talk(this, events, "#-Temperatura atual é " + atualTemp);
+    wdactions.io.didact.obj.talk(this, events, "#-Temperatura atual é " + atualTemp, 1);
 
 };
 
@@ -64,7 +64,7 @@ htriggers.queue.states['check-repo']['input'] = function() {
 
     htriggers.led.off(htriggers.oled.activity);
 
-    wdactions.io.didact.obj.talk(this, events, "#-Deseja verificar repositórios ?");
+    wdactions.io.didact.obj.talk(this, events, "#-Deseja verificar repositórios ?", 1);
 
 };
 htriggers.queue.states['check-repo']['output'] = function() {
@@ -76,11 +76,11 @@ htriggers.queue.states['check-repo']['output'] = function() {
 
     htriggers.led.off(htriggers.oled.error);
 
-    wdactions.io.didact.obj.talk(this, events, "#-Verificando repositórios...");
+    wdactions.io.didact.obj.talk(this, events, "#-Verificando repositórios...", 1);
 
     athena.wait(5);
 
-    wdactions.io.didact.obj.talk(this, events, "#-Repositórios atualizados!");
+    wdactions.io.didact.obj.talk(this, events, "#-Repositórios atualizados!",1 );
 
 };
 
