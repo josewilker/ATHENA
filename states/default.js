@@ -1,6 +1,8 @@
 /** STATES **/
 
-// 1. Index
+/**
+ * Index state
+ */
 htriggers.queue.states['index'] = [];
 htriggers.queue.states['index']['input'] = function() {
 
@@ -13,7 +15,72 @@ htriggers.queue.states['index']['input'] = function() {
 };
 htriggers.queue.states['index']['output'] = function() {
 
-    console.log("teste output index");
+    wdactions.io.didact.obj.talk(this, events, "#-Olá, estou disponível...");
+
+};
+
+/**
+ * Check wheater
+ */
+
+htriggers.queue.states['temp'] = [];
+htriggers.queue.states['temp']['input'] = function() {
+
+    htriggers.led.on(htriggers.oled.activity);
+
+    events.speak(0," > CHECAR                ");
+    events.speak(1," > TEMPERATURA           ");
+
+    htriggers.led.off(htriggers.oled.activity);
+
+    wdactions.io.didact.obj.talk(this, events, "#-Deseja saber a temperatura atual ?");
+
+    athena.wait(5);
+
+};
+
+htriggers.queue.states['temp']['output'] = function() {
+
+    atualTemp = wdactions.io.mtemp.obj.getValue(this, events);
+
+    events.speak(0,"TEMPERATURA :heart:");
+    events.speak(1,"ATUAL: " + atualTemp);
+
+    wdactions.io.didact.obj.talk(this, events, "#-Temperatura atual é " + atualTemp);
+
+};
+
+/**
+ * Check repositories
+ */
+
+htriggers.queue.states['check-repo'] = [];
+htriggers.queue.states['check-repo']['input'] = function() {
+
+    htriggers.led.on(htriggers.oled.activity);
+
+    events.speak(0," > CHECAR                ");
+    events.speak(1," > REPOSITÓRIOS          ");
+
+    htriggers.led.off(htriggers.oled.activity);
+
+    wdactions.io.didact.obj.talk(this, events, "#-Deseja verificar repositórios ?");
+
+};
+htriggers.queue.states['check-repo']['output'] = function() {
+
+    htriggers.led.on(htriggers.oled.error);
+
+    events.speak(0," > CHECANDO           ");
+    events.speak(1," > REPOSITÓRIOS       ");
+
+    htriggers.led.off(htriggers.oled.error);
+
+    wdactions.io.didact.obj.talk(this, events, "#-Verificando repositórios...");
+
+    athena.wait(5);
+
+    wdactions.io.didact.obj.talk(this, events, "#-Repositórios atualizados!");
 
 };
 
