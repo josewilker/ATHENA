@@ -4,9 +4,9 @@ var path = require('path');
 wdactions = {};
 wdactions.io = {};
 
-wdactions.getAll = function(path) {
-    return fs.readdirSync(path).filter(function(file) {
-        return fs.statSync(path.join(path, file)).isDirectory();
+wdactions.getAll = function(dirPath) {
+    return fs.readdirSync(dirPath).filter(function(file) {
+        return fs.statSync(path.join(dirPath, file)).isDirectory();
     });
 }
 
