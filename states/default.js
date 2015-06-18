@@ -34,7 +34,7 @@ htriggers.queue.states['temp']['input'] = function() {
 
     htriggers.led.off(htriggers.oled.activity);
 
-    wdactions.io.didact.obj.talk(this, events, "Deseja saber a temperatura atual ?", 1);
+    wdactions.io.didact.obj.talk(this, events, "Deseja saber a temperatura do ambiente ?", 1);
 
     athena.wait(5);
 
@@ -45,9 +45,15 @@ htriggers.queue.states['temp']['output'] = function() {
     atualTemp = wdactions.io.mtemp.obj.getValue(this, events);
 
     events.speak(0,"TEMPERATURA :heart:");
-    events.speak(1,"ATUAL: " + atualTemp);
+    events.speak(1,"AMBIENTE: " + atualTemp);
 
-    wdactions.io.didact.obj.talk(this, events, "Temperatura atual é " + atualTemp, 1);
+    wdactions.io.didact.obj.talk(this, events, "Temperatura do ambiente é " + atualTemp + " graus celsius", 1);
+
+    athena.wait(5);
+
+    events.speakClear();
+
+    htriggers.queue.states['index']['input']();
 
 };
 
