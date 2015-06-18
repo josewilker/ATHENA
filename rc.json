@@ -33,5 +33,25 @@
         "topic" : "state.indexo",
         "cmd" : "-index",
         "type" : "output"
+    },
+    {
+        "topic" : "state.crepo",
+        "cmd" : "-check-repo",
+        "type" : "input"
+    },
+    {
+        "topic" : "state.crepoo",
+        "cmd" : "-check-repo",
+        "type" : "output"
+    },
+    {
+        "topic" : "state.ctemp",
+        "cmd" : "-temp",
+        "type" : "input"
+    },
+    {
+        "topic" : "state.ctempo",
+        "cmd" : "-temp",
+        "type" : "output"
     }
 ]
