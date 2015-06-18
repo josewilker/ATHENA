@@ -90,7 +90,7 @@ mtemp.getValue = function(context, events) {
     var rs = (1023 - a) * 10000 / a; // calculo de resistencia do sensor
     var ct = Math.round(1 / (Math.log(rs / 10000) / 3975 + 1 / 298.15) - 273.15); // conversão para celsius
 
-    return mtemp;
+    return ct;
 
 }
 
