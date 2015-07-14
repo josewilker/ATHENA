@@ -1,0 +1,22 @@
+[
+    {
+        "topic" : "rc.ip",
+        "cmd" : "_ip.run(this, events)",
+        "wait" : "10"
+    },
+    {
+        "topic" : "rc.mario",
+        "cmd" : "_songs.mario(this, events)",
+        "wait" : "2"
+    },
+    {
+        "topic" : "state.index",
+        "cmd" : "-index",
+        "type" : "input"
+    },
+    {
+        "topic" : "state.indexo",
+        "cmd" : "-index",
+        "type" : "output"
+    }
+]

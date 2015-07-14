@@ -1,0 +1,80 @@
+{
+    "name" : "ATHENA",
+    "version" : "1.0",
+    "socket" : {
+        "port" : 1884
+    },
+    "hw" : {
+        "lcd" : {
+            "id" : "JHD1313M1"
+        },
+        "button" : {
+            "0" : {
+                "obj" : "one",
+                "pname" : "B.Select 1",
+                "pin" : 8,
+                "file" : "btn0.js"
+            },
+            "1" : {
+                "obj" : "two",
+                "pname" : "B.Select 2",
+                "pin" : 7,
+                "file" : "btn1.js",
+                "action" : [{
+                    "times" : 3,
+                    "name" : "athenaIp.ip"
+                }]
+            }
+        },
+        "led" : {
+            "0" : {
+                "obj" : "activity",
+                "pname" : "LED Blue",
+                "pin" : 4
+            },
+            "1" : {
+                "obj" : "error",
+                "pname" : "LED Red",
+                "pin" : 2
+            }
+        },
+        "sensor" : {
+            "0" : {
+                "obj" : "temp",
+                "pname" : "Temperatura",
+                "pin" : 0
+            },
+            "1" : {
+                "obj" : "buzz",
+                "pname" : "Buzzer",
+                "pin" : 6,
+                "type" : "five-piezo"
+            }
+        },
+        "relay" : {
+            "0" : {
+                "obj" : "l1",
+                "pname" : "Luz 1",
+                "pin"   : 5
+            }
+        }
+    },
+    "actionDefault" : "mtemp",
+    "actions" : {
+        "0" : {
+            "text" : "Temperatura",
+            "action" : "mtemp.js",
+            "lib" : "mtemp"
+        },
+        "1" : {
+            "text" : "Endereço IP",
+            "lib" : "ip",
+            "action" : "ip.js"
+        },
+        "2" : {
+            "text" : "Sons",
+            "lib" : "songs",
+            "action" : "songs.js"
+        }
+    }
+}
