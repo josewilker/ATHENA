@@ -8,7 +8,8 @@ Athena is a virtual machine state to do actions using NodeJS. You can use it to 
 examples of actions:
     send a email,
     deploy applications,
-    check wheater and much more.```
+    check wheater and much more.
+```
 
 ## Installation
 Athena need NodeJS installed on your computer. So, install it before all.
