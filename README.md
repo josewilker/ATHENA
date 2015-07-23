@@ -54,7 +54,7 @@ git clone https://github.com/cowboy/node-getobject.git getobject
 # Easy setup (config.json)
 ATHENA help you work with hardware for **Internet of Things** of Intel products. Intel help you make a connection between physical world with virtual. So, below you can see how setup your sensors, leds, piezo, buttons, relay. fast and easy, see below:
 
-```
+````
 {
     "name" : "A.T.H.E.N.A",
     "version" : "1.0",
@@ -135,7 +135,7 @@ ATHENA help you work with hardware for **Internet of Things** of Intel products.
         }
     }
 }
-```
+````
 Basically, before you put right data on **config.json** you can run your machine with default installation of packages and see the results.
 
 # Actions
@@ -383,7 +383,7 @@ When ATHENA start's she up a socket server that allow you connect on it using a 
 > If you can extend skills of your device, put on him a dedicated ip address and control athena actions and states remote.
 
 Remote command file example (rc.json):
-```
+````
 [
     {
         "topic" : "rc.ip",
@@ -406,7 +406,7 @@ Remote command file example (rc.json):
         "type" : "output"
     }
 ]
-```
+````
 All commands are avaiable with TCP protocol, so if you have a application on your network, that send a message by socket, you can send message to your device.
 
 **PAY ATENTION!** Look the file, if you want send a message that action is a state, you need put command (cmd) option with -, if you want call to a action directly, you maybe that have use the _ .
