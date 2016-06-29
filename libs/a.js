@@ -42,7 +42,7 @@ athena.init = function() {
         var server = new mosca.Server(_settingsConfig.socket);
 
         server.on('clientConnected', function(client) {
-            console.log("Client connected...", client.id);
+            athena.log("Client connected... " + client.id);
         });
 
         server.on('published', function(packet, client) {
@@ -61,23 +61,33 @@ athena.init = function() {
                             }
 
                             stateName = rc[i]['cmd'].substr(1);
+
                             if (rc[i]['type'] == "input") {
+
                                 htriggers.queue.states[stateName]["input"]();
+
                             } else if (rc[i]['type'] == "output") {
+
                                 htriggers.queue.states[stateName]["output"]();
+
                             } else {
-                                console.log("invalid type of remote action!!!!");
+
+                                athena.log("invalid type of remote action!!!!");
+
                             }
 
                         break;
                         case "_": // working with actions
 
-                            console.log("working with a remote call...");
+                            athena.log("working with a remote call...");
+
                             cdot = rc[i]['cmd'].indexOf(".",1);
+
                             cxp = "wdactions.io."+rc[i]['cmd'].substr(1,cdot)+"obj."+rc[i]['cmd'].substr(cdot+1,rc[i]['cmd'].length)+";";
                             eval(cxp);
 
-                            console.log("waiting ... " + rc[i]['wait'] + " seconds");
+                            athena.log("waiting ... " + rc[i]['wait'] + " seconds");
+
                             eval("athena.wait(" + rc[i]['wait'] + ");");
 
                         break;
@@ -109,15 +119,11 @@ athena.init = function() {
         // -- do default action
 
         if (_settingsConfig.actionDefault) {
-            //asyncButtons.push(function(callback){
-                //console.log(wdactions);
-                eval("athena.default.state=wdactions.io." + _settingsConfig.actionDefault + ".obj.default(objThis, events, objAthenaHW);");
-                //eval("wdactions.io.songs.obj.beethoven(this, events);");
-            //});
+            eval("athena.default.state=wdactions.io." + _settingsConfig.actionDefault + ".obj.default(objThis, events, objAthenaHW);");
         }
 
         server.on('ready', function(){
-            console.log('ATHENA is up and running.');
+            athena.log('ATHENA is up and running.');
         });
 
     }
@@ -132,8 +138,8 @@ athena.isReady = function() {
     return true;
 }
 
-athena.log = function() {
-    console.log("registrando log de dados");
+athena.log = function(l) {
+    console.log(l);
 }
 
 module.exports = athena;
