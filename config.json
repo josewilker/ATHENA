@@ -101,6 +101,11 @@
             "text" : "Didact",
             "lib" : "didact",
             "action" : "didact.js"
+        },
+        "7" : {
+            "text" : "Deploy",
+            "lib" : "deploy",
+            "action" : "deploy.js"
         }
     }
 }
