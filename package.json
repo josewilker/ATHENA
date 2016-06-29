@@ -11,7 +11,8 @@
 		"mqtt" : "latest",
 		"johnny-five" : "latest",
 		"j5-songs" : "latest",
-		"io-galileo" : "latest"
+		"io-galileo" : "latest",
+		"sleep" : "latest"
 	},
 	"repository" : {
 		"type" : "git",
