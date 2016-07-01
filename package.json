@@ -12,7 +12,10 @@
 		"johnny-five" : "latest",
 		"j5-songs" : "latest",
 		"io-galileo" : "latest",
-		"sleep" : "latest"
+		"sleep" : "latest",
+		"forever" : "latest",
+		"simple-ssh" : "latest",
+		"newrelic" : "latest"
 	},
 	"repository" : {
 		"type" : "git",

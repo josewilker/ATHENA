@@ -18,8 +18,7 @@ deploy.default = function(context, events) {
 
 	var ssh = new SSH({
 	    host: '177.71.182.171',
-	    user: 'ec2-user',
-	    key: 'keys/uiskizin.pem'
+	    user: 'ec2-user'
 	});
 
 	ssh.exec('echo $PATH', {

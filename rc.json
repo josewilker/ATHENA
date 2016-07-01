@@ -10,6 +10,11 @@
         "wait" : "2"
     },
     {
+        "topic" : "songs.starwars",
+        "cmd" : "_songs.sw(this, events)",
+        "wait" : "2"
+    },
+    {
         "topic" : "greetings.begin",
         "cmd" : "_greetings.begin(this, events)",
         "wait" : "2"
@@ -17,11 +22,6 @@
     {
         "topic" : "deploy.begin",
         "cmd" : "_deploy.begin(this, events)",
-        "wait" : "2"
-    },
-    {
-        "topic" : "songs.starwars",
-        "cmd" : "_songs.sw(this, events)",
         "wait" : "2"
     },
     {
